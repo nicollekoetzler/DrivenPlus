@@ -50,7 +50,7 @@ const Input = styled.div`
 input {
     background: #FFFFFF;
     border: 1px solid #D5D5D5;
-    border-radius: 5px;
+    border-radius: 8px;
     width: 303px;
     height: 45px;
     font-style: normal;
@@ -73,7 +73,7 @@ button {
     width: 303px;
     height: 45px;
     background: #FF4791;
-    border-radius: 4.6px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
     color: white;
