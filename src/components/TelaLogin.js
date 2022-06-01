@@ -58,12 +58,16 @@ input {
     font-size: 14px;
     padding: 14px;
 }
+
+input:focus {
+    outline: none !important;
+}
 `
 
 const Button = styled.div`
 
 button {
-    width: 309px;
+    width: 303px;
     height: 45px;
     background: #FF4791;
     border-radius: 4.6px;
