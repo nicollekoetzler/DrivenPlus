@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/imgs/logo.png'
 
@@ -16,7 +17,9 @@ export default function TelaLogin() {
                     <button>ENTRAR</button>
                 </Button>
             </form>
-            <p>Não possui uma conta? Cadastre-se</p>
+            <Link to={`/sign-up`} >
+                <p>Não possui uma conta? Cadastre-se</p>
+            </Link>
         </Container>
     )
 }

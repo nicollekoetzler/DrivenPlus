@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../assets/imgs/logo.png'
+import { Link } from 'react-router-dom';
 
 export default function TelaSignUp() {
     return(
@@ -18,10 +18,12 @@ export default function TelaSignUp() {
                     <input type="password" placeholder="Senha" />
                 </Input>
                 <Button>
-                    <button>ENTRAR</button>
+                    <button>CADASTRAR</button>
                 </Button>
             </form>
-            <p>Já possui uma conta? Entre</p>
+            <Link to={`/`} >
+                <p>Já possui uma conta? Entre</p>
+            </Link>
         </Container>
     )
 }
