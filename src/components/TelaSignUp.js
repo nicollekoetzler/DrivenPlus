@@ -1,21 +1,52 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function TelaSignUp() {
+    const URL = "https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up";
+
+    const [inputEmail, setInputEmail] = useState("");
+    const [inputName, setInputName] = useState("");
+    const [inputCpf, setInputCpf] = useState("");
+    const [inputPassword, setInputPassword] = useState("");
+
+    const [infosCadastro, setInfosCadastro] = useState({});
+
+    const navigate = useNavigate();
+
+    function setData(event){
+        event.preventDefault()
+
+        const body = {
+            email: inputEmail,
+            name: inputName,
+            cpf: inputCpf,
+            password: inputPassword
+        }
+
+        const promise = axios.post(URL, body);
+
+        promise.then((response) => {
+            navigate("/")
+        });
+    }
+
+
     return(
         <Container>
-            <form>
+            <form onSubmit={setData}>
                 <Input>
-                    <input type="text" placeholder="Nome" />
+                    <input onChange={e => setInputName(e.target.value)} value={inputName} type="text" placeholder="Nome" />
                 </Input>
                 <Input>
-                    <input type="text" placeholder="CPF" />
+                    <input onChange={e => setInputCpf(e.target.value)} value={inputCpf} type="text" placeholder="CPF" />
                 </Input>
                 <Input>
-                    <input type="email" placeholder="E-mail" />
+                    <input onChange={e => setInputEmail(e.target.value)} value={inputEmail} type="email" placeholder="E-mail" />
                 </Input>
                 <Input>
-                    <input type="password" placeholder="Senha" />
+                    <input onChange={e => setInputPassword(e.target.value)} value={inputPassword} type="password" placeholder="Senha" />
                 </Input>
                 <Button>
                     <button>CADASTRAR</button>

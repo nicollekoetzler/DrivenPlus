@@ -1,17 +1,42 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/imgs/logo.png'
+import { useState } from 'react';
+import axios from 'axios'
+
 
 export default function TelaLogin() {
+    const URL = "https://mock-api.driven.com.br/api/v4/driven-plus/auth/login";
+
+    const [inputEmail, setInputEmail] = useState("");
+    const [inputPassword, setInputPassword] = useState("");
+
+    const [infosUsuario, setInfosUsuario] = useState({});
+
+    function setData(event){
+        event.preventDefault();
+
+        const body = {
+            email: inputEmail,
+	        password: inputPassword
+        }
+
+        const promise = axios.post(URL, body);
+
+        promise.then((response) => {
+            console.log(response);
+        });
+    }
+
     return(
         <Container>
             <img src={logo} />
-            <form>
+            <form onSubmit={setData}>
                 <Input>
-                    <input type="email" placeholder="E-mail" />
+                    <input onChange={e => setInputEmail(e.target.value)} value={inputEmail} type="email" placeholder="E-mail" />
                 </Input>
                 <Input>
-                    <input type="password" placeholder="Senha" />
+                    <input onChange={e => setInputPassword(e.target.value)} value={inputPassword} type="password" placeholder="Senha" />
                 </Input>
                 <Button>
                     <button>ENTRAR</button>
