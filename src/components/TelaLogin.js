@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/imgs/logo.png'
 import { useState } from 'react';
 import axios from 'axios'
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 
 export default function TelaLogin() {
@@ -11,7 +13,9 @@ export default function TelaLogin() {
     const [inputEmail, setInputEmail] = useState("");
     const [inputPassword, setInputPassword] = useState("");
 
-    const [infosUsuario, setInfosUsuario] = useState({});
+    const { infosUsuario, setInfosUsuario } = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     function setData(event){
         event.preventDefault();
@@ -24,9 +28,22 @@ export default function TelaLogin() {
         const promise = axios.post(URL, body);
 
         promise.then((response) => {
-            console.log(response);
+            setInfosUsuario(response.data);
+            
+            if((response.data.membership) === null){
+                navigate("/subscriptions")
+            }
+            //haveMembership(response.data.membership);
         });
+
+    
     }
+
+    /*function haveMembership(membership) {
+        if(membership === null){
+            navigate("/subscriptions")
+        }
+    }*/
 
     return(
         <Container>

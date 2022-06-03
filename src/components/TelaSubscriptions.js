@@ -1,9 +1,39 @@
 import styled from "styled-components"
-import plano1 from '../assets/imgs/plano1.png'
-import plano2 from '../assets/imgs/plano2.png'
-import plano3 from '../assets/imgs/plano3.png'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useContext } from "react";
+import TokenContext from "../contexts/UserContext";
+import UserContext from "../contexts/UserContext";
+
+function Plans({image, price, id}) {
+    return (
+        <Plan>
+            <img src={image} />
+            <h2>{price}</h2>
+        </Plan>
+    )
+}
 
 export default function TelaSubscriptions() {
+    const [plans, setPlans] = useState([]);
+    const URL = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships";
+    const { infosUsuario, setInfosUsuario } = useContext(UserContext);
+
+    useEffect(() => {
+        const header = {
+            headers: {
+                Authorization: `Bearer ${ infosUsuario.token }`
+            }
+        }
+
+        const promise = axios.get(header, URL);
+    
+        promise.then(response => {  
+            setPlans([...response.data])
+        })
+    }, [] );
+
+
     return(
         <>
             <Container>
@@ -11,18 +41,7 @@ export default function TelaSubscriptions() {
                     <h1>Escolha seu plano</h1>
                 </Header>
                 <div className="bottom">
-                    <Plan>
-                        <img src={plano1}/>
-                        <h2>R$ 39,99</h2>
-                    </Plan>
-                    <Plan>
-                        <img src={plano2}/>
-                        <h2>R$ 69,99</h2>
-                    </Plan>
-                    <Plan>
-                        <img src={plano3}/>
-                        <h2>R$ 99,99</h2>
-                    </Plan>
+                    {plans.map(value => <Plans id={value.id} image={value.image} price={value.price} />)}
                 </div>
             </Container>
         </>
