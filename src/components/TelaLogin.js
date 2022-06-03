@@ -29,14 +29,17 @@ export default function TelaLogin() {
 
         promise.then((response) => {
             setInfosUsuario(response.data);
-            
+
             if((response.data.membership) === null){
                 navigate("/subscriptions")
+            } else {
+                navigate("/home")
             }
             //haveMembership(response.data.membership);
         });
 
-    
+        promise.catch(err => alert("Usuário não cadastrado."))
+
     }
 
     /*function haveMembership(membership) {
