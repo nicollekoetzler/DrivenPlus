@@ -30,6 +30,9 @@ export default function TelaSignUp() {
         promise.then((response) => {
             navigate("/")
         });
+
+        promise.catch(err => alert("Falha no cadastro"));
+
     }
 
 

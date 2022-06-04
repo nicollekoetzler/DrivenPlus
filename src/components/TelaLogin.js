@@ -38,7 +38,7 @@ export default function TelaLogin() {
             //haveMembership(response.data.membership);
         });
 
-        promise.catch(err => alert("Usuário não cadastrado."))
+        promise.catch(err => alert("Usuário não cadastrado."));
 
     }
 
