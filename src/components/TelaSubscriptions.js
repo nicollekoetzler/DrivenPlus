@@ -5,11 +5,15 @@ import UserContext from "../contexts/UserContext";
 import { Link, useNavigate } from 'react-router-dom';
 
 function Plans({image, price, id}) {
+    const navigate = useNavigate();
+
     return (
-        <Plan>
-            <img src={image} />
-            <h2>{price}</h2>
-        </Plan>
+        <Link style={{textDecoration: "none", color: "black"}} to={`/subscriptions/${id}`} >
+            <Plan>
+                <img src={image} />
+                <h2>{price}</h2>
+            </Plan>
+        </Link>
     )
 }
 
