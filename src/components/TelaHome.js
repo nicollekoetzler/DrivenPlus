@@ -22,7 +22,9 @@ export default function TelaHome() {
                 </Top>
                 <Bottom>
                     <Button>
-                        <button>Mudar plano</button>
+                        <Link to={`/subscriptions`} >
+                            <button>Mudar plano</button>
+                        </Link>
                     </Button>
                     <CancelButton>
                         <button>Cancelar plano</button>
@@ -82,7 +84,7 @@ const Button = styled.div`
 
 button {
     width: 303px;
-    height: 45px;
+    height: 50px;
     background: #FF4791;
     border-radius: 8px;
     border: none;
@@ -101,7 +103,7 @@ const CancelButton = styled.div`
 
 button {
     width: 303px;
-    height: 45px;
+    height: 50px;
     background: #FF4747;
     border-radius: 8px;
     border: none;

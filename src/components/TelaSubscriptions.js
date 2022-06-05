@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useContext } from "react";
-import TokenContext from "../contexts/UserContext";
 import UserContext from "../contexts/UserContext";
+import { Link, useNavigate } from 'react-router-dom';
 
 function Plans({image, price, id}) {
     return (
@@ -20,17 +19,19 @@ export default function TelaSubscriptions() {
     const { infosUsuario, setInfosUsuario } = useContext(UserContext);
 
     useEffect(() => {
+
         const header = {
             headers: {
-                Authorization: `Bearer ${ infosUsuario.token }`
+                "Authorization": `Bearer ${ infosUsuario.token }`
             }
         }
 
-        const promise = axios.get(header, URL);
+        const promise = axios.get(URL, header);
     
         promise.then(response => {  
-            setPlans([...response.data])
+            setPlans(response.data)
         })
+
     }, [] );
 
     return(

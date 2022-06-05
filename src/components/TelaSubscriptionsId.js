@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import arrow from '../assets/imgs/arrow.png'
 import plano1 from '../assets/imgs/plano1.png'
@@ -7,7 +8,9 @@ export default function TelaSubscriptionsId() {
     return(
         <Container>
             <Topbar>
-                <img src={arrow}/>
+                <Link to={`/subscriptions`} >
+                    <img src={arrow}/>
+                </Link>
             </Topbar>
             <img src={plano1} />
             <h1>Driven Plus</h1>

@@ -90,11 +90,11 @@ input {
     border: 1px solid #D5D5D5;
     border-radius: 8px;
     width: 303px;
-    height: 45px;
+    height: 50px;
     font-style: normal;
     font-weight: 400;
     font-size: 19.976px;
-    margin: 8px 0;
+    margin: 6px 0;
     border-color: white;
     font-size: 14px;
     padding: 14px;
@@ -109,7 +109,7 @@ const Button = styled.div`
 
 button {
     width: 303px;
-    height: 45px;
+    height: 50px;
     background: #FF4791;
     border-radius: 8px;
     border: none;
@@ -118,7 +118,7 @@ button {
     font-size: 20.976px;
     font-style: normal;
     font-weight: 400;
-    margin: 24px 0;
+    margin: 20px 0;
     font-weight: 700;
     font-size: 14px;
 }
